@@ -281,7 +281,8 @@
       transition: transform .2s, box-shadow .2s;
     }
     .card:hover { transform: translateY(-4px); box-shadow: 0 18px 44px rgba(0,0,0,.55); border-color: rgba(212,154,82,.35); }
-    .card .top { height: 120px; background: linear-gradient(135deg, #1c2a4a, #2c3f6b); display:grid; place-items:center; color:#fff; font-size: 44px; position: relative; }
+    .card .top { height: 160px; background: linear-gradient(135deg, #1c2a4a, #2c3f6b); display:grid; place-items:center; color:#fff; font-size: 44px; position: relative; overflow: hidden; }
+    .card .top img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .card.u20 .top { background: linear-gradient(135deg, var(--accent-dark), var(--accent)); }
     .card.youth .top { background: linear-gradient(135deg, #0c5560, #117a87); }
     .card .body { padding: 22px; }
@@ -310,7 +311,8 @@
     /* Rinks */
     .rink-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .rink { background: var(--surface); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); border: 1px solid var(--border); display:flex; flex-direction:column; }
-    .rink .top { height: 130px; display:grid; place-items:center; font-size: 46px; color:#fff; background: linear-gradient(135deg,#1c2a4a,#3f63a8); }
+    .rink .top { height: 160px; display:grid; place-items:center; font-size: 46px; color:#fff; background: linear-gradient(135deg,#1c2a4a,#3f63a8); overflow:hidden; }
+    .rink .top img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .rink:nth-child(2) .top { background: linear-gradient(135deg,#16213d,#2c3f6b); }
     .rink:nth-child(3) .top { background: linear-gradient(135deg,var(--accent-dark),var(--accent)); }
     .rink .body { padding: 22px; flex:1; }
@@ -528,7 +530,7 @@
       </div>
       <div class="cards">
         <a class="card men" href="https://www.eliteprospects.com/team/22186/turkmenistan" target="_blank" rel="noopener">
-          <div class="top">🏒</div>
+          <div class="top"><img src="assets/teams/team0.png" alt="Men's National Team" loading="lazy" /></div>
           <div class="body">
             <span class="tag" data-i18n="team_men_tag">Senior · Men</span>
             <h4 data-i18n="team_men_title">Men's National Team</h4>
@@ -536,7 +538,7 @@
           </div>
         </a>
         <div class="card u20">
-          <div class="top">🥅</div>
+          <div class="top"><img src="assets/teams/team1.png" alt="Men's U20 National Team" loading="lazy" /></div>
           <div class="body">
             <span class="tag" data-i18n="team_u20_tag">U20 · Junior</span>
             <h4 data-i18n="team_u20_title">Men's U20 National Team</h4>
@@ -544,7 +546,7 @@
           </div>
         </div>
         <a class="card youth" href="https://www.eliteprospects.com/team/38367/turkmenistan-u18" target="_blank" rel="noopener">
-          <div class="top">⛸️</div>
+          <div class="top"><img src="assets/teams/team2.png" alt="Men's U18 National Team" loading="lazy" /></div>
           <div class="body">
             <span class="tag" data-i18n="team_u18_tag">U18 · Development</span>
             <h4 data-i18n="team_u18_title">Men's U18 National Team</h4>
@@ -615,7 +617,7 @@
       </div>
       <div class="rink-grid">
         <div class="rink">
-          <div class="top">🏟️</div>
+          <div class="top"><img src="assets/rinks/rink0.png" alt="Winter Sports Complex Ashgabat" loading="lazy" /></div>
           <div class="body">
             <h4 data-i18n="rink1_name">Winter Sports Complex Ashgabat</h4>
             <div class="city" data-i18n="rink_city">📍 Ashgabat</div>
@@ -627,7 +629,7 @@
           </div>
         </div>
         <div class="rink">
-          <div class="top">⛸️</div>
+          <div class="top"><img src="assets/rinks/rink1.png" alt="Galkan Winter Sports Centre" loading="lazy" /></div>
           <div class="body">
             <h4 data-i18n="rink2_name">Galkan Winter Sports Centre</h4>
             <div class="city" data-i18n="rink_city">📍 Ashgabat</div>
@@ -639,7 +641,7 @@
           </div>
         </div>
         <div class="rink">
-          <div class="top">❄️</div>
+          <div class="top"><img src="assets/rinks/rink2.png" alt="Ashgabat Ice Palace" loading="lazy" /></div>
           <div class="body">
             <h4 data-i18n="rink3_name">Ashgabat Ice Palace</h4>
             <div class="city" data-i18n="rink_city">📍 Ashgabat</div>
