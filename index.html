@@ -89,9 +89,26 @@
     .navbar .brand img.logo { width: 34px; height: 34px; }
     .navbar .brand b { font-size: 16px; line-height: 1; color: var(--ink); }
 
-    .nav-links { display: flex; align-items: center; gap: 22px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { font-weight: 600; font-size: 14px; color: var(--ink); opacity: .72; transition: opacity .2s, color .2s; }
+    .nav-links { position: relative; display: flex; align-items: center; gap: 2px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { position: relative; z-index: 1; display: block; padding: 7px 14px; border-radius: 999px; font-weight: 600; font-size: 14px; color: var(--ink); opacity: .72; transition: opacity .2s, color .2s; }
     .nav-links a:hover { opacity: 1; color: var(--accent-light); }
+    .nav-links a.active { opacity: 1; color: #fff; }
+    /* iOS-style liquid-glass selector that slides to the active section */
+    .nav-pill {
+      position: absolute;
+      top: 0; left: 0;
+      height: 100%;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      -webkit-backdrop-filter: blur(10px) saturate(160%);
+      backdrop-filter: blur(10px) saturate(160%);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 0;
+      transition: transform .42s cubic-bezier(.34, 1.4, .5, 1), width .42s cubic-bezier(.34, 1.4, .5, 1), opacity .3s ease;
+    }
 
     .nav-actions { display: flex; align-items: center; gap: 8px; }
     .navbar .btn { padding: 9px 18px; font-size: 13px; box-shadow: none; }
@@ -193,15 +210,26 @@
         linear-gradient(135deg, #0c1322 0%, #0a0f1c 55%, #070b15 100%);
       overflow: hidden;
     }
-    .hero::after {
+    .hero-video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .hero::before {
       content: "";
       position: absolute; inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 2px, transparent 2px 22px);
+      z-index: 1;
+      background:
+        radial-gradient(1100px 520px at 78% -12%, rgba(212, 154, 82, .18), transparent 60%),
+        radial-gradient(900px 500px at 12% 8%, rgba(63, 99, 168, .22), transparent 60%),
+        linear-gradient(135deg, rgba(12,19,34,.72) 0%, rgba(10,15,28,.78) 55%, rgba(7,11,21,.82) 100%);
       pointer-events: none;
     }
     .hero-inner {
       position: relative;
+      z-index: 2;
       display: grid;
       grid-template-columns: 1.1fr .9fr;
       gap: 40px;
@@ -462,11 +490,14 @@
 
   <!-- ===== Hero ===== -->
   <div id="top" class="hero">
+    <video class="hero-video" autoplay muted playsinline preload="auto" poster="assets/hero/tkm-hero-poster.jpg" aria-hidden="true">
+      <source src="assets/hero/tkm-hero.mp4" type="video/mp4" />
+    </video>
     <div class="wrap hero-inner">
       <div>
         <span class="eyebrow">🏒 TKMIHF · EST 2012</span>
-        <h1 data-i18n="hero_h1">Growing the game of ice hockey across Turkmenistan</h1>
-        <p class="lead" data-i18n="hero_lead">From the rinks of Ashgabat to the national stage, the Turkmenistan Ice Hockey Federation develops players, builds teams, and brings the world's fastest team sport to a new generation.</p>
+        <h1 data-i18n="hero_h1">Born in the Desert. Built on the Ice.</h1>
+        <p class="lead" data-i18n="hero_lead">From the rinks of Ashgabat to the national stage.</p>
         <div class="hero-cta">
           <a class="btn" href="#join" data-i18n="hero_joinBtn">Join the Federation</a>
           <a class="btn outline-white" href="#teams" data-i18n="hero_teamsBtn">Our Teams</a>
@@ -810,8 +841,8 @@
       en: {
         title: "Turkmenistan Ice Hockey Federation",
         nav_about: "About", nav_teams: "Teams", nav_clubs: "Clubs", nav_rinks: "Rinks", nav_contact: "Contact", nav_getInvolved: "Get Involved",
-        hero_h1: "Growing the game of ice hockey across Turkmenistan",
-        hero_lead: "From the rinks of Ashgabat to the national stage, the Turkmenistan Ice Hockey Federation develops players, builds teams, and brings the world's fastest team sport to a new generation.",
+        hero_h1: "Born in the Desert. Built on the Ice.",
+        hero_lead: "From the rinks of Ashgabat to the national stage.",
         hero_joinBtn: "Join the Federation", hero_teamsBtn: "Our Teams",
         hero_card_title: "2026 IIHF World Championship",
         hero_card_meta1: "<b style=\"font-size:16px;\">Division III · Group A</b><br/>🌍 Cape Town, South Africa<br/>📅 13–19 April 2026",
@@ -859,8 +890,8 @@
       ru: {
         title: "Федерация хоккея Туркменистана",
         nav_about: "О нас", nav_teams: "Команды", nav_clubs: "Клубы", nav_rinks: "Катки", nav_contact: "Контакты", nav_getInvolved: "Присоединиться",
-        hero_h1: "Развиваем хоккей с шайбой по всему Туркменистану",
-        hero_lead: "От катков Ашхабада до национальной арены — Федерация хоккея Туркменистана развивает игроков, формирует команды и открывает самый быстрый командный спорт в мире новому поколению.",
+        hero_h1: "Рожденные в пустыне. Закаленные на льду.",
+        hero_lead: "От катков Ашхабада до национальной арены.",
         hero_joinBtn: "Вступить в Федерацию", hero_teamsBtn: "Наши команды",
         hero_card_title: "Чемпионат мира IIHF 2026",
         hero_card_meta1: "<b style=\"font-size:16px;\">Дивизион III · Группа A</b><br/>🌍 Кейптаун, ЮАР<br/>📅 13–19 апреля 2026",
@@ -908,8 +939,8 @@
       tk: {
         title: "Türkmenistanyň Buzhokkeý Federasiýasy",
         nav_about: "Barada", nav_teams: "Toparlar", nav_clubs: "Klublar", nav_rinks: "Meýdançalar", nav_contact: "Habarlaşmak", nav_getInvolved: "Goşulyň",
-        hero_h1: "Türkmenistanda buzhokkeý oýnuny ösdürýäris",
-        hero_lead: "Aşgabadyň buz meýdançalaryndan milli derejä çenli — Türkmenistanyň Buzhokkeý Federasiýasy oýunçylary taýýarlaýar, toparlary döredýär we dünýäniň iň çalt topar sportuny täze nesle ýetirýär.",
+        hero_h1: "Gumuň goynunda doglanlar. Buz üstünde taplananlar.",
+        hero_lead: "Aşgabadyň buz meýdançalaryndan milli derejä çenli.",
         hero_joinBtn: "Federasiýa goşulyň", hero_teamsBtn: "Toparlarymyz",
         hero_card_title: "2026 IIHF Dünýä çempionaty",
         hero_card_meta1: "<b style=\"font-size:16px;\">III Diwizion · A topary</b><br/>🌍 Keýptaun, Günorta Afrika<br/>📅 2026-njy ýylyň 13–19-njy apreli",
@@ -1040,6 +1071,52 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { setMenu(false); closeLang(); }
     });
+
+    // ---------- Scroll-spy: liquid-glass pill follows the active section ----------
+    (function () {
+      var navLinks = document.querySelector('.nav-links');
+      if (!navLinks) return;
+      var links = Array.prototype.slice.call(navLinks.querySelectorAll('a'));
+      if (!links.length) return;
+
+      var pill = document.createElement('span');
+      pill.className = 'nav-pill';
+      navLinks.insertBefore(pill, navLinks.firstChild);
+
+      var sections = links.map(function (a) {
+        var id = a.getAttribute('href');
+        return (id && id.charAt(0) === '#') ? document.querySelector(id) : null;
+      });
+
+      var current = null;
+      function movePill(link) {
+        if (!link) { pill.style.opacity = '0'; return; }
+        pill.style.opacity = '1';
+        pill.style.width = link.offsetWidth + 'px';
+        pill.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+      }
+      function setActive(link) {
+        if (link === current) return;
+        current = link;
+        links.forEach(function (a) { a.classList.toggle('active', a === link); });
+        movePill(link);
+      }
+
+      function onScroll() {
+        var pos = window.scrollY + 150; // account for the fixed nav height
+        var idx = -1;
+        for (var i = 0; i < sections.length; i++) {
+          if (sections[i] && sections[i].offsetTop <= pos) idx = i;
+        }
+        // Near the bottom, force the last link active even if its top isn't reached.
+        if (window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) idx = links.length - 1;
+        setActive(idx >= 0 ? links[idx] : null);
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', function () { if (current) movePill(current); });
+      onScroll();
+    })();
   </script>
 </body>
 </html>
